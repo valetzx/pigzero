@@ -23,4 +23,4 @@ ADD main.sh /main.sh
 
 RUN chmod a+x /main.sh
 ENTRYPOINT ["/main.sh"]
-RUN docker pull abh1nav/dockerui
+CMD [ "sh", "-c", "docker pull abh1nav/dockerui" ]
