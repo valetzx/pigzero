@@ -13,7 +13,7 @@ LABEL version="1.8.4"
 LABEL description="Containerized ZeroTier One for use on CoreOS or other Docker-only Linux hosts."
 
 # ZeroTier relies on UDP port 9993
-EXPOSE 9993/udp 80
+EXPOSE 9993/udp 80 9000
 
 RUN mkdir -p /var/lib/zerotier-one
 COPY --from=builder /usr/sbin/zerotier-cli /usr/sbin/zerotier-cli
@@ -21,6 +21,8 @@ COPY --from=builder /usr/sbin/zerotier-idtool /usr/sbin/zerotier-idtool
 COPY --from=builder /usr/sbin/zerotier-one /usr/sbin/zerotier-one
 ADD main.sh /main.sh
 
-RUN chmod a+x /main.sh
-ENTRYPOINT ["/main.sh"]
+
 CMD [ "sh", "-c", "docker pull abh1nav/dockerui" ]
+CMD [ "sh", "-c", "docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock   abh1nav/dockerui" ]
+CMD [ "sh", "-c", "docker ps -l" ]
+
