@@ -1,5 +1,5 @@
 FROM debian as builder
-
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/workspace/TensorRT/TensorRT-5.1.5.0/lib
 ## Supports x86_64, x86, arm, and arm64
 
 RUN apt-get update && apt-get install -y curl gnupg
@@ -20,6 +20,7 @@ COPY --from=builder /usr/sbin/zerotier-cli /usr/sbin/zerotier-cli
 COPY --from=builder /usr/sbin/zerotier-idtool /usr/sbin/zerotier-idtool
 COPY --from=builder /usr/sbin/zerotier-one /usr/sbin/zerotier-one
 ADD main.sh /main.sh
+
 
 
 CMD [ "sh", "-c", "docker pull abh1nav/dockerui" ]
