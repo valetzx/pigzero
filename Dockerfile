@@ -23,7 +23,4 @@ ADD main.sh /main.sh
 
 
 
-CMD [ "sh", "-c", "docker pull abh1nav/dockerui" ]
-CMD [ "sh", "-c", "docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock   abh1nav/dockerui" ]
-
 
