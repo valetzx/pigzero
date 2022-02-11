@@ -19,7 +19,7 @@ RUN mkdir -p /var/lib/zerotier-one
 COPY --from=builder /usr/sbin/zerotier-cli /usr/sbin/zerotier-cli
 COPY --from=builder /usr/sbin/zerotier-idtool /usr/sbin/zerotier-idtool
 COPY --from=builder /usr/sbin/zerotier-one /usr/sbin/zerotier-one
-COPY --from=builder /var/lib/zerotier-one/main.sh /main.sh
+ADD main.sh /main.sh
 
 RUN chmod 0755 /main.sh
 ENTRYPOINT ["/main.sh"]
