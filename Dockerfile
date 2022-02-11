@@ -21,6 +21,6 @@ COPY --from=builder /usr/sbin/zerotier-idtool /usr/sbin/zerotier-idtool
 COPY --from=builder /usr/sbin/zerotier-one /usr/sbin/zerotier-one
 ADD main.sh /main.sh
 
-RUN chmod 0755 /main.sh
+RUN chmod a+x /main.sh
 ENTRYPOINT ["/main.sh"]
 CMD ["zerotier-one"]
